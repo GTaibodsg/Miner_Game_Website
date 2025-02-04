@@ -1,29 +1,29 @@
-# miner-game-website
+# Miner Game Website
 
-This template should help get you started developing with Vue 3 in Vite.
+本项目是 <a href="https://github.com/GTaibodsg/Miner-Game">该项目</a> 的网页实现版本，复刻的是经典模式地图，目前还有些许不完善的地方，包括：
 
-## Recommended IDE Setup
+1. 岩浆的扩散逻辑：原项目是每次玩家操作后使用 BFS 算法扩散岩浆，而本项目目前使用每次仅扩散相邻的一格的形式进行扩散。可能 $\cdots\space\cdots$ 可以当做一个特性？
+2. 没有好看的 UI 界面。
+3. 游戏过程尚没有足够的文本交互信息。
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+项目运行方法：
 
-## Customize configuration
+1. 首先克隆本地项目
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+```
+git clone https://github.com/GTaibodsg/Miner_Game_Website
+```
 
-## Project Setup
+2. 在终端执行如下命令
 
-```sh
+```
+cd Miner_Game_Website
+```
+
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
 ```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
+npm run dev
 ```
