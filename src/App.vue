@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Miner_Game_Website</h1>
+    <h1>Miner Game</h1>
     <div v-if="!gameStarted">
       <label for="playerCount">游戏人数（2-16）：</label>
       <input
@@ -32,13 +32,13 @@
       <button v-if="!fin" @click="playerAct" :disabled="isGameOver">开始操作</button>
       <button v-else @click="nextTurn" :disabled="isGameOver">下一回合</button>
       <div>
-        <p>当前玩家：{{currentPlayer.name}}</p>
+        <p v-if="isGameOver">当前玩家：{{currentPlayer.name}}</p>
       </div>
       <div v-if="isGameOver">
         <h2>游戏结束！</h2>
-        <div v-for="i in players" :key="i">
-          <PlayerInfo :player="i"/>
-        </div>
+<!--        <div v-for="i in players" :key="i">-->
+<!--          <PlayerInfo :player="i"/>-->
+<!--        </div>-->
         <button @click="restartGame">重新开始</button>
       </div>
     </div>
@@ -160,11 +160,7 @@ export default {
         result += "什么都没有发生。";
       } else if (cell === 2 || cell === 3) {
         if(cell===3)
-          checkDanger(this.map, x, y, player);
-        if(cell===2)
-          result+="糟糕，你触发了炸弹！";
-        else
-          result+="糟糕，你掉进了岩浆！";
+          result+=checkDanger(this.map, x, y, player);
       } else {
         const mineResult = mineResource(this.map, x, y, player);
         if(cell>=10)
@@ -185,12 +181,12 @@ export default {
         }
       }
 
-      this.roundResult = result;
-
       spreadLava(this.map);//检查岩浆扩散
 
       if(cell===2)
-        checkDanger(this.map, x, y, player);
+        result+=checkDanger(this.map, x, y, player);
+
+      this.roundResult = result;
 
       // 检查游戏是否结束
       if (checkGameOver(this.players)) {
