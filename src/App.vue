@@ -89,6 +89,18 @@ export default {
       }));
 
       this.players.splice(this.playerCount);
+
+      // if(this.players.length<this.playerCount){
+      //   alert("玩家名不能为空！");
+      //   return;
+      // }
+
+      for(var i=0;i<this.playerCount;i++)
+      if(this.players[i]==undefined||this.players[i].name===""){
+        alert("玩家名不能为空！");
+        return;
+      }
+
       // 初始化地图
       this.map = generateMap();
       this.gameStarted = true;
