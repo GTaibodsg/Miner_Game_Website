@@ -77,6 +77,7 @@ export default {
   },
   methods: {
     startGame() {
+      // console.log(this.playerCount);
       // 初始化玩家
       this.players = this.playerNames.map((name) => ({
         name,
@@ -86,6 +87,8 @@ export default {
         ign: 0,
         Round: 0,
       }));
+
+      this.players.splice(this.playerCount);
       // 初始化地图
       this.map = generateMap();
       this.gameStarted = true;
