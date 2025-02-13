@@ -106,6 +106,8 @@ export default {
       this.gameStarted = true;
       this.isGameOver = false;
       this.roundResult = "";
+
+      this.currentPlayerIndex=0;
     },
     playerAct(){
 
